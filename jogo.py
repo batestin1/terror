@@ -413,7 +413,7 @@ if 'movie' not in st.session_state:
     st.session_state.movie, st.session_state.tips = get_random_movie()
 
 # Exibindo o título do filme
-st.title(f"Filme: {st.session_state.movie[0]}")
+st.title(f"Filme: {st.session_state.movie}")
 
 # Exibindo as 3 dicas
 for i, tip in enumerate(st.session_state.tips):
