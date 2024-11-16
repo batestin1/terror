@@ -404,6 +404,7 @@ movies = {
                            "Atmosfera sombria e opressiva."]
 }
 
+# Função para escolher um filme aleatório
 def get_random_movie():
     return random.choice(list(movies.items()))
 
@@ -412,7 +413,7 @@ if 'movie' not in st.session_state:
     st.session_state.movie, st.session_state.tips = get_random_movie()
 
 # Exibindo o título do filme
-st.title(f"Filme: {st.session_state.movie}")
+st.title(f"Filme: {st.session_state.movie[0]}")
 
 # Exibindo as 3 dicas
 for i, tip in enumerate(st.session_state.tips):
@@ -421,4 +422,3 @@ for i, tip in enumerate(st.session_state.tips):
 # Botão para trocar o filme
 if st.button("Trocar Filme"):
     st.session_state.movie, st.session_state.tips = get_random_movie()
-    st.experimental_rerun()
