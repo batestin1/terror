@@ -1,3 +1,6 @@
+import streamlit as st
+import random
+
 movies = {
     "O Exorcista": ["Conta a história de uma jovem possuída por um demônio.", 
                     "Dirigido por William Friedkin.", 
@@ -401,4 +404,21 @@ movies = {
                            "Atmosfera sombria e opressiva."]
 }
 
-print(len(movies))
+def get_random_movie():
+    return random.choice(list(movies.items()))
+
+# Definindo o estado da aplicação
+if 'movie' not in st.session_state:
+    st.session_state.movie, st.session_state.tips = get_random_movie()
+
+# Exibindo o título do filme
+st.title(f"Filme: {st.session_state.movie}")
+
+# Exibindo as 3 dicas
+for i, tip in enumerate(st.session_state.tips):
+    st.write(f"Dica {i+1}: {tip}")
+
+# Botão para trocar o filme
+if st.button("Trocar Filme"):
+    st.session_state.movie, st.session_state.tips = get_random_movie()
+    st.experimental_rerun()
